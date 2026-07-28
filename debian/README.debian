@@ -1,0 +1,77 @@
+mink-optee-client for Debian
+=============================
+
+Overview
+--------
+This package provides a Qualcomm-adapted build of the upstream OP-TEE PKCS#11
+TEE client library (libckqteec), designed to communicate with the Qualcomm
+Trusted Execution Environment (QTEE) via the MinkIPC transport layer.
+
+It is based on the upstream OP-TEE Client source (https://github.com/OP-TEE/optee_client)
+at version 4.0.0, with minimal patches applied to link against the Qualcomm
+MinkIPC stack (libminkteec, libminkadaptor) instead of the standard OP-TEE transport.
+
+Relationship to optee-client
+-----------------------------
+This package is NOT a replacement for the upstream optee-client package. The
+two packages are designed to work with different TEE stacks and firmware:
+
+  - optee-client  : targets the upstream OP-TEE firmware stack.
+  - mink-optee-client : targets the Qualcomm QTEE firmware stack via MinkIPC.
+
+The libraries shipped by each package have distinct SONAMEs and do not
+conflict at the binary level:
+
+  - optee-client ships      : libckteec.so.0
+  - mink-optee-client ships : libckqteec.so.0
+
+However, the development package (mink-optee-client-dev) ships header files
+(e.g. pkcs11.h) that overlap with those provided by optee-client-dev.
+Therefore, mink-optee-client-dev and optee-client-dev cannot be installed
+simultaneously. See the "Development Files" section below.
+
+Development Files
+-----------------
+The mink-optee-client-dev package conflicts with optee-client-dev due to
+overlapping header file paths (e.g. /usr/include/pkcs11.h). Only one of the
+two -dev packages may be installed at a time.
+
+If you require development headers for the upstream OP-TEE stack, install
+optee-client-dev. If you are developing against the Qualcomm QTEE/MinkIPC
+stack, install mink-optee-client-dev instead.
+
+To switch between the two:
+
+  # Switch to mink-optee-client-dev
+  apt remove optee-client-dev
+  apt install mink-optee-client-dev
+
+  # Switch back to optee-client-dev
+  apt remove mink-optee-client-dev
+  apt install optee-client-dev
+
+Supported Architecture
+----------------------
+This package is built for arm64 only, reflecting the target hardware
+platforms for Qualcomm QTEE-based systems.
+
+Temporary Nature of This Package
+---------------------------------
+This package is maintained as a temporary solution hosted in the Qualcomm
+QLI APT repository,
+
+The long-term plan is to upstream the necessary patches to the OP-TEE Client
+project to natively support the Qualcomm MinkIPC transport layer. Once those
+patches are merged upstream and QTEE is upgraded to a compatible OP-TEE
+Client version, this package will be deprecated in favour of the standard
+optee-client package.
+
+Users will be notified of the migration path at that time via a transitional
+package and release notes.
+
+Security and Maintenance
+------------------------
+Security fixes from the upstream OP-TEE Client v4.x release series will be
+backported into this package for the duration of its maintenance window.
+Users are encouraged to track updates from the Qualcomm QLI APT repository
+to receive security patches promptly.
