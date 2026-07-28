@@ -1,23 +1,34 @@
-Source: template
+Source: mink-optee-client
+Maintainer: Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>
+Standards-Version: 4.6.2
 Section: libs
-Maintainer: Maintainers.pkg-template <Maintainers.pkg-template@qualcomm.com>
-Uploaders:
- FirstName LastName <user@oss.qualcomm.com>,
-Build-Depends: debhelper-compat (= 13)
-Standards-Version: 4.7.4
-Homepage: https://github.com/qualcomm-linux/<upstream>
-Vcs-Browser: https://github.com/qualcomm-linux/pkg-<upstream>
-Vcs-Git: https://github.com/qualcomm-linux/pkg-<upstream>.git
+Priority: optional
+Rules-Requires-Root: no
+Build-Depends: debhelper-compat (= 13), cmake, libminkipc-dev
+Homepage: https://github.com/OP-TEE/optee_client
+Vcs-Browser: https://salsa.debian.org/debian/optee-client
+Vcs-Git: https://salsa.debian.org/debian/optee-client.git
 
-Package: template1
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Template package
- This is an example package to demonstrate the Qualcomm OSS development flow
+Package: libckqteec0
+Architecture: arm64
+Section: libs
+Description: Qualcomm PKCS#11 client library for QTEE
+ This package provides libckqteec, a Qualcomm-adapted build of the upstream
+ OP-TEE PKCS#11 TEE client library. It is built against the Qualcomm MinkIPC
+ transport layer (libminkteec, libminkadaptor) and is designed to communicate
+ with the Qualcomm Trusted Execution Environment (QTEE).
+ .
+ This package contains the libckqteec shared library.
+Depends: ${misc:Depends}, ${shlibs:Depends}
 
-Package: template-dev
+Package: mink-optee-client-dev
+Architecture: arm64
 Section: libdevel
-Architecture: any
-Depends: template1 (= ${binary:Version}), ${misc:Depends}
-Description: Template package dev
- This is an example package to demonstrate the Qualcomm OSS development flow
+Description: Qualcomm PKCS#11 client library for QTEE - development files
+ This package provides libckqteec, a Qualcomm-adapted build of the upstream
+ OP-TEE PKCS#11 TEE client library. It is built against the Qualcomm MinkIPC
+ transport layer (libminkteec, libminkadaptor) and is designed to communicate
+ with the Qualcomm Trusted Execution Environment (QTEE).
+ .
+ This package contains the development files for libckqteec library.
+Depends: libckqteec0 (= ${binary:Version}), ${misc:Depends}
