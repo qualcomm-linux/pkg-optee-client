@@ -1,6 +1,10 @@
 mink-optee-client (4.0.0-1) UNRELEASED; urgency=medium
 
+  [ Abhinaba Rakshit ]
   [Abhinaba Rakshit]
   * Initial release.
 
- -- Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>  Wed, 15 Jul 2026 15:37:30 +0530
+  [ GitHub Service Bot ]
+  * New upstream release
+
+ -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Tue, 28 Jul 2026 10:08:20 +0000
