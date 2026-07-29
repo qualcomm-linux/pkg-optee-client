@@ -49,29 +49,3 @@ To switch between the two:
   # Switch back to optee-client-dev
   apt remove mink-optee-client-dev
   apt install optee-client-dev
-
-Supported Architecture
-----------------------
-This package is built for arm64 only, reflecting the target hardware
-platforms for Qualcomm QTEE-based systems.
-
-Temporary Nature of This Package
----------------------------------
-This package is maintained as a temporary solution hosted in the Qualcomm
-QLI APT repository,
-
-The long-term plan is to upstream the necessary patches to the OP-TEE Client
-project to natively support the Qualcomm MinkIPC transport layer. Once those
-patches are merged upstream and QTEE is upgraded to a compatible OP-TEE
-Client version, this package will be deprecated in favour of the standard
-optee-client package.
-
-Users will be notified of the migration path at that time via a transitional
-package and release notes.
-
-Security and Maintenance
-------------------------
-Security fixes from the upstream OP-TEE Client v4.x release series will be
-backported into this package for the duration of its maintenance window.
-Users are encouraged to track updates from the Qualcomm QLI APT repository
-to receive security patches promptly.

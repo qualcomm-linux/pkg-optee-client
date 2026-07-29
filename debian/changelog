@@ -1,7 +1,6 @@
-mink-optee-client (4.0.0-1) UNRELEASED; urgency=medium
+mink-optee-client (4.0.0-1~) UNRELEASED; urgency=medium
 
   [ Abhinaba Rakshit ]
-  [Abhinaba Rakshit]
   * Initial release.
 
   [ GitHub Service Bot ]
