@@ -30,6 +30,19 @@ However, the development package (mink-optee-client-dev) ships header files
 Therefore, mink-optee-client-dev and optee-client-dev cannot be installed
 simultaneously. See the "Development Files" section below.
 
+Packages
+--------
+
+libckqteec0
+ The shared runtime library (libckqteec.so.0) used by applications that
+ communicate with the Qualcomm QTEE via the PKCS#11 interface over MinkIPC.
+ This is the package end-users and runtime dependencies should pull in.
+
+mink-optee-client-dev
+  Development headers and the unversioned linker stub (libckqteec.so) for
+  building applications against libckqteec0. Conflicts with optee-client-dev
+  due to overlapping header paths; see the "Development Files" section below.
+
 Development Files
 -----------------
 The mink-optee-client-dev package conflicts with optee-client-dev due to
