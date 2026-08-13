@@ -1,9 +1,9 @@
-mink-optee-client (4.0.0-0qli+staging1~bpo13+1) UNRELEASED; urgency=medium
+mink-optee-client (4.0.0-0qli+staging1~bpo13+1) trixie; urgency=medium
 
   [ Abhinaba Rakshit ]
   * Rebuild for trixie. 
 
- -- Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>  Thu, 13 Aug 2026 11:46:40 +0530
+ -- Debusine Action Bot <noreply@bot.invalid>  Thu, 13 Aug 2026 18:45:30 +0000
 
 mink-optee-client (4.0.0-0qli+staging1) forky; urgency=medium
 
