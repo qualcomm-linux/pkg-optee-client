@@ -1,6 +1,6 @@
-mink-optee-client (4.0.0-1) UNRELEASED; urgency=medium
+mink-optee-client (4.0.0-1) resolute; urgency=medium
 
   [ Abhinaba Rakshit ]
   * Initial release with upstream 4.0.0.
 
- -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Tue, 28 Jul 2026 10:08:20 +0000
+ -- GitHub Service Bot <githubservice@qti.qualcomm.com>  Mon, 31 Aug 2026 15:49:46 +0000
