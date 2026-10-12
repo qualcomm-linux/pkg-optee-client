@@ -1,13 +1,22 @@
-Description: Build Qualcomm mink specific libckqteec library
-Author: Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>
-Origin: other, Qualcomm forked mink specific changes over OPTEE-Client
-Last-Update: 2026-07-14
+Description: optee-client: Add CMake file for building libckteec
+ Adds a CMake file for building libckteec on top of Mink (libminkteec and
+ libminkadaptor) instead of the OP-TEE driver, replacing upstream's top-level
+ CMakeLists.txt.
+Author: Harshal Dev <harshal.dev@oss.qualcomm.com>
+Origin: upstream, https://github.com/qualcomm/minkipc/commit/b938bceb35b21f195164c2233a98ccaed8fb4819
+Last-Update: 2026-10-12
+Comment: Backport of the optee-client/CMakeLists.txt part of the upstream
+ commit. Adapted to this repository's layout: source and header paths drop the
+ optee_client/ submodule prefix, cmake_minimum_required() is added because the
+ file is now a top-level project, and the upstream BUILD_PKCS11 hook and the
+ hardcoded in-tree libminkteec include path are left out (see
+ use-pkgconfig-for-mink.patch). The -Wno-unterminated-string-initialization
+ flag of upstream commit 38cdcc8 is handled in debian/rules instead.
 ---
-This patch header follows DEP-3: http://dep.debian.net/deps/dep3/
-Index: optee-client/CMakeLists.txt
+Index: pkg-optee-client/CMakeLists.txt
 ===================================================================
---- optee-client.orig/CMakeLists.txt
-+++ optee-client/CMakeLists.txt
+--- pkg-optee-client.orig/CMakeLists.txt
++++ pkg-optee-client/CMakeLists.txt
 @@ -1,11 +1,9 @@
 -cmake_minimum_required(VERSION 3.4)
 -project(optee_client C)
@@ -15,7 +24,7 @@ Index: optee-client/CMakeLists.txt
 -# https://cmake.org/Wiki/CMake_Useful_Variables
 -set(CMAKE_TOOLCHAIN_FILE CMakeToolchain.txt)
 +cmake_minimum_required(VERSION 3.10)
-+project(ckqteec
++project(ckteec
 +	VERSION 0.1.0
 +	LANGUAGES C)
  
@@ -24,15 +33,7 @@ Index: optee-client/CMakeLists.txt
  
  include(GNUInstallDirs)
  
-@@ -22,6 +20,7 @@ add_compile_options(
- 	-Wmissing-noreturn -Wmissing-prototypes -Wnested-externs
- 	-Wpointer-arith -Wshadow -Wstrict-prototypes
- 	-Wswitch-default -Wwrite-strings -fPIC
-+	-Wno-unterminated-string-initialization
- )
- if("${CMAKE_C_COMPILER_ID}" STREQUAL "GNU")
-     add_compile_options(
-@@ -38,12 +37,75 @@ if(CCACHE_FOUND)
+@@ -38,12 +36,75 @@ if(CCACHE_FOUND)
      set_property(GLOBAL PROPERTY RULE_LAUNCH_LINK ccache)
  endif(CCACHE_FOUND)
  
@@ -73,9 +74,9 @@ Index: optee-client/CMakeLists.txt
 +################################################################################
 +# Built library
 +################################################################################
-+add_library(ckqteec SHARED ${SRC})
++add_library(ckteec SHARED ${SRC})
 +
-+set_target_properties(ckqteec PROPERTIES
++set_target_properties(ckteec PROPERTIES
 +	VERSION ${PROJECT_VERSION}
 +	SOVERSION ${PROJECT_VERSION_MAJOR}
 +)
@@ -83,7 +84,7 @@ Index: optee-client/CMakeLists.txt
 +################################################################################
 +# Flags always set
 +################################################################################
-+target_compile_definitions(ckqteec
++target_compile_definitions(ckteec
 +	PRIVATE -D_GNU_SOURCE
 +	PRIVATE -DBINARY_PREFIX="LT"
 +)
@@ -95,14 +96,14 @@ Index: optee-client/CMakeLists.txt
 +################################################################################
 +# Public and private header and library dependencies
 +################################################################################
-+target_include_directories(ckqteec
++target_include_directories(ckteec
 +	PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/libckteec/include>
 +	$<INSTALL_INTERFACE:libckteec/include>
 +	PRIVATE libckteec/src
 +	PRIVATE include
 +)
 +
-+target_link_libraries(ckqteec
++target_link_libraries(ckteec
 +	PRIVATE pthread
 +	PRIVATE minkteec
 +	PRIVATE minkadaptor
@@ -112,7 +113,7 @@ Index: optee-client/CMakeLists.txt
 +################################################################################
 +# Install targets
 +################################################################################
-+install(TARGETS ckqteec
++install(TARGETS ckteec
 +	DESTINATION ${CMAKE_INSTALL_LIBDIR}
 +)
 +

@@ -1,3 +1,4 @@
-add-teec-trace-file
-build-libckqteec
+add-teec-trace-file.patch
+build-libckteec.patch
+rename-libckteec-to-libckqteec.patch
 use-pkgconfig-for-mink.patch
