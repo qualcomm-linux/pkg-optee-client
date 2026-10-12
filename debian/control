@@ -41,6 +41,8 @@ Description: Qualcomm PKCS#11 client library for QTEE - development files
 Depends:
  libckqteec0 (= ${binary:Version}),
  ${misc:Depends},
+Provides:
+ libckqteec-dev (= ${binary:Version}),
 Conflicts:
  optee-client-dev,
 Replaces:
