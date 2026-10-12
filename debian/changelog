@@ -1,3 +1,9 @@
+mink-optee-client (4.0.0-0qli+staging3~) UNRELEASED; urgency=medium
+
+  * Unreleased changes
+
+ -- Debusine Action Bot <noreply@bot.invalid>  Mon, 12 Oct 2026 15:07:27 +0000
+
 mink-optee-client (4.0.0-0qli+staging2) forky; urgency=medium
 
   [ Lukas Märdian ]
