@@ -1,3 +1,4 @@
 add-teec-trace-file
 cmaketoolchain-txt
 build-libckqteec
+use-pkgconfig-for-mink.patch
