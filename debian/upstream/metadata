@@ -1,0 +1,9 @@
+# See https://wiki.debian.org/UpstreamMetadata for more info/fields.
+# mink-optee-client is based upon upstream optee_client v4.0.0 and
+# vendored in:
+# https://github.com/qualcomm/minkipc/tree/main/optee-client
+
+Bug-Database: https://github.com/OP-TEE/optee_client/issues
+Bug-Submit: https://github.com/OP-TEE/optee_client/issues/new
+Repository-Browse: https://github.com/OP-TEE/optee_client
+Repository: https://github.com/OP-TEE/optee_client.git
