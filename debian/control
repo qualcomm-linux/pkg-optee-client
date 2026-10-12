@@ -16,7 +16,6 @@ Vcs-Browser: https://github.com/qualcomm-linux/pkg-optee-client
 
 Package: libckqteec0
 Architecture: arm64
-Section: libs
 Description: Qualcomm PKCS#11 client library for QTEE
  This package provides libckqteec, a Qualcomm-adapted build of the upstream
  OP-TEE PKCS#11 TEE client library. It is built against the Qualcomm MinkIPC
