@@ -1,8 +1,8 @@
 mink-optee-client (4.0.0-0qli+staging3~) UNRELEASED; urgency=medium
 
-  * Unreleased changes
+  * d/mink-optee-client-dev.install: Ship relevant libteec headers.
 
- -- Debusine Action Bot <noreply@bot.invalid>  Mon, 12 Oct 2026 15:07:27 +0000
+ -- Lukas Märdian <lukas.maerdian@oss.qualcomm.com>  Tue, 13 Oct 2026 10:22:59 +0200
 
 mink-optee-client (4.0.0-0qli+staging2) forky; urgency=medium
 
