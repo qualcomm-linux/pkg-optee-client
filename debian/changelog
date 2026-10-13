@@ -30,7 +30,7 @@ mink-optee-client (4.0.0-0qli+staging2) forky; urgency=medium
     - d/p/add-teec-trace-file.patch
     - d/p/build-libckteec.patch
     - d/p/rename-libckteec-to-libckqteec.patch
-  * d/rules: Supress unterminated string init warnings for GCC 15.
+  * d/rules: Suppress unterminated string init warnings for GCC 15.
   * d/control: Drop inherited field.
 
  -- Debusine Action Bot <noreply@bot.invalid>  Mon, 12 Oct 2026 15:04:19 +0000
