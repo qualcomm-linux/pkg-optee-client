@@ -1,8 +1,9 @@
 mink-optee-client (4.0.0-0qli1~bpo13+1~) UNRELEASED; urgency=medium
 
-  * Unreleased changes
+  * Rebuild for trixie.
+  * d/gbp.conf: Update for QLI.
 
- -- Debusine Action Bot <noreply@bot.invalid>  Thu, 13 Aug 2026 18:49:44 +0000
+ -- Lukas Märdian <lukas.maerdian@oss.qualcomm.com>  Thu, 15 Oct 2026 09:58:12 +0200
 
 mink-optee-client (4.0.0-0qli1) forky; urgency=medium
 
@@ -53,7 +54,7 @@ mink-optee-client (4.0.0-0qli+staging2) forky; urgency=medium
 mink-optee-client (4.0.0-0qli+staging1~bpo13+1) trixie; urgency=medium
 
   [ Abhinaba Rakshit ]
-  * Rebuild for trixie. 
+  * Rebuild for trixie.
 
  -- Debusine Action Bot <noreply@bot.invalid>  Thu, 13 Aug 2026 18:45:30 +0000
 
