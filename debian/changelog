@@ -1,9 +1,10 @@
-mink-optee-client (4.0.0-0qli1~) UNRELEASED; urgency=medium
+mink-optee-client (4.0.0-0qli1) forky; urgency=medium
 
+  [ Lukas Märdian ]
   * Rebuild for QLI.
   * d/gbp.conf: Update for QLI.
 
- -- Lukas Märdian <lukas.maerdian@oss.qualcomm.com>  Thu, 15 Oct 2026 09:48:29 +0200
+ -- Debusine Action Bot <noreply@bot.invalid>  Thu, 15 Oct 2026 07:50:26 +0000
 
 mink-optee-client (4.0.0-0qli+staging3) forky; urgency=medium
 
