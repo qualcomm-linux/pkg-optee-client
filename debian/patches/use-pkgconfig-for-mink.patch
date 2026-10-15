@@ -1,0 +1,32 @@
+Description: optree-client: Locate libmink* via pkg-config
+ Their headers live under /usr/include/minkipc, which is only exposed through
+ the Cflags of the minkteec and minkadaptor pkg-config files.
+Author: Lukas Märdian <lukas.maerdian@oss.qualcomm.com>
+Forwarded: https://github.com/qualcomm/minkipc/pull/110
+Last-Update: 2026-10-12
+---
+Index: pkg-optee-client/CMakeLists.txt
+===================================================================
+--- pkg-optee-client.orig/CMakeLists.txt
++++ pkg-optee-client/CMakeLists.txt
+@@ -40,6 +40,9 @@ endif(CCACHE_FOUND)
+ ################################################################################
+ # Packages
+ ################################################################################
++find_package(PkgConfig REQUIRED)
++pkg_check_modules(MINKTEEC REQUIRED IMPORTED_TARGET minkteec)
++pkg_check_modules(MINKADAPTOR REQUIRED IMPORTED_TARGET minkadaptor)
+ find_package(Threads REQUIRED)
+ if(NOT THREADS_FOUND)
+ 	message(FATAL_ERROR "Threads not found")
+@@ -96,8 +99,8 @@ target_include_directories(ckqteec
+ 
+ target_link_libraries(ckqteec
+ 	PRIVATE pthread
+-	PRIVATE minkteec
+-	PRIVATE minkadaptor
++	PRIVATE PkgConfig::MINKTEEC
++	PRIVATE PkgConfig::MINKADAPTOR
+ 	PRIVATE m
+ )
+ 

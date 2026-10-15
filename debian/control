@@ -1,17 +1,21 @@
 Source: mink-optee-client
 Maintainer: Abhinaba Rakshit <abhinaba.rakshit@oss.qualcomm.com>
+Uploaders:
+ Lukas Märdian <lukas.maerdian@oss.qualcomm.com>,
 Standards-Version: 4.6.2
 Section: libs
-Priority: optional
-Rules-Requires-Root: no
-Build-Depends: debhelper-compat (= 13), cmake, libminkipc-dev
+Build-Depends:
+ debhelper-compat (= 13),
+ cmake,
+ pkgconf,
+ libminkadaptor-dev,
+ libminkteec-dev,
 Homepage: https://github.com/qualcomm-linux/pkg-optee-client
-Vcs-Git: https://github.com/qualcomm-linux/pkg-optee-client -b qcom/debian/latest
+Vcs-Git: https://github.com/qualcomm-linux/pkg-optee-client.git
 Vcs-Browser: https://github.com/qualcomm-linux/pkg-optee-client
 
 Package: libckqteec0
 Architecture: arm64
-Section: libs
 Description: Qualcomm PKCS#11 client library for QTEE
  This package provides libckqteec, a Qualcomm-adapted build of the upstream
  OP-TEE PKCS#11 TEE client library. It is built against the Qualcomm MinkIPC
@@ -19,7 +23,9 @@ Description: Qualcomm PKCS#11 client library for QTEE
  with the Qualcomm Trusted Execution Environment (QTEE).
  .
  This package contains the libckqteec shared library.
-Depends: ${misc:Depends}, ${shlibs:Depends}
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
 
 Package: mink-optee-client-dev
 Architecture: arm64
@@ -31,6 +37,12 @@ Description: Qualcomm PKCS#11 client library for QTEE - development files
  with the Qualcomm Trusted Execution Environment (QTEE).
  .
  This package contains the development files for libckqteec library.
-Depends: libckqteec0 (= ${binary:Version}), ${misc:Depends}
-Conflicts: optee-client-dev
-Replaces: optee-client-dev
+Depends:
+ libckqteec0 (= ${binary:Version}),
+ ${misc:Depends},
+Provides:
+ libckqteec-dev (= ${binary:Version}),
+Conflicts:
+ optee-client-dev,
+Replaces:
+ optee-client-dev,

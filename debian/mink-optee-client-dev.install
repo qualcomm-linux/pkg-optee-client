@@ -1,2 +1,6 @@
 usr/include/*
 usr/lib/*/libckqteec.so
+# As used by mink-optee-test and
+# installed by conflicting upstream optee-client-dev
+libteec/include/tee_client_api.h usr/include/
+libteec/include/tee_client_api_extensions.h usr/include/
